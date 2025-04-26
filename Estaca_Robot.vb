@@ -71,6 +71,8 @@ Public Class Class1
         RobDoc.ViewMngr.Refresh
         MsgBox "Pile created with elastic supports!"
 
-End Sub
+
+        teste = 0
+    End Sub
 
 End Class
