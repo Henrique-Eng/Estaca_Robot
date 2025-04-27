@@ -1,12 +1,20 @@
 ﻿Imports Microsoft.VisualBasic
+Imports RobotStructuralAnalysis.Interop.Robot.API
 
-Public Class Class1
+' This code creates a pile with elastic supports in Robot Structural Analysis
 
-    ' This code creates a pile with elastic supports in Robot Structural Analysis
+Sub CreatePileWithElasticSupports()
+    '*** Run Robot Aplication ***
+    If RoApp Is Nothing Then
+        Set RoApp = CreateObject("Robot.Application")
+    End If
+    If Not RoApp.IsRunning Then
+        MsgBox "Robot is not running. Please start Robot first."
+        Exit Sub
+    End If
 
-    Sub CreatePileWithElasticSupports()
-        ' VARIABLES
-        Dim RobApp As RobotApplication
+    '*** Create a new project ***
+    Dim RobApp As RobotApplication
         Dim RobDoc As RobotDocument
         Dim Nodes As RobotNodes
         Dim Bars As RobotBars
@@ -43,7 +51,7 @@ Public Class Class1
 
     ' BEGIN MODELING
     ' Create nodes
-    For i = 0 To NumSegments
+        For i = 0 To NumSegments
             NodeIndex = i + 1
             Nodes.Create NodeIndex, 0, 0, -i ' Node spaced every 1m vertically down
         Next i
@@ -72,7 +80,5 @@ Public Class Class1
         MsgBox "Pile created with elastic supports!"
 
 
-        teste = 0
-    End Sub
 
-End Class
+    End Sub
